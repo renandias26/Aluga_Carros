@@ -38,4 +38,9 @@ export class CarsController {
             )
         }
     }
+
+    @Get()
+    findAll() {
+        return this.carsService.findAll()
+    }
 }

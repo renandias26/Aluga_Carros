@@ -1,12 +1,14 @@
-import { IsInt, IsNotEmpty, IsString } from 'class-validator'
+import { IsInt, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator'
 export class CreateCarDto {
     @IsString()
     @IsNotEmpty()
+    @MinLength(4)
+    @MaxLength(30)
     name: string;
 
     @IsNotEmpty()
     @IsInt()
-    Category: CarsCategory;
+    Category: number;
 
     @IsNotEmpty()
     Avaliable: boolean
@@ -18,5 +20,8 @@ export class CreateCarDto {
     Brand: String
 
     @IsString()
+    @IsNotEmpty()
+    @MinLength(4)
+    @MaxLength(30)
     Plate: String
 }

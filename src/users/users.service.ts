@@ -22,7 +22,16 @@ export class UsersService {
   }
 
   async delete(userID: string) {
-    this.userModel.findByIdAndDelete(userID)
+    try {
+      const result = this.userModel.findByIdAndDelete(userID)
+      if (!result) {
+        console.log("Usuário não encontrado ou já deletado.");
+        return { success: false, message: "Usuário não encontrado ou já deletado." };
+      }
+    } catch (error) {
+      console.error("Erro ao deletar usuário:", error);
+      return { success: false, message: "Erro ao deletar usuário." };
+    }
   }
 
   async findOne(userID: string) {

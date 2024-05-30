@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dtos/create-user-dto';
-import { AuthGuard } from 'src/auth/auth.guard';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('users')
 export class UsersController {
@@ -17,6 +17,7 @@ export class UsersController {
         return this.usersService.update(userID, createUserDto)
     }
 
+    @UseGuards(AuthGuard)
     @Delete(':userID')
     delete(@Param('userID') userID: string) {
         return this.usersService.delete(userID)
@@ -39,7 +40,6 @@ export class UsersController {
         }
     }
 
-    @UseGuards(AuthGuard)
     @Get()
     findAll() {
         return this.usersService.findAll()

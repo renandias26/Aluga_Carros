@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
-import { Car } from './entities/car.entity';
+import { Car } from './schemas/car.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
@@ -23,5 +23,10 @@ export class CarsService {
   async findOne(carID: string) {
     const findedUser = this.carModel.findById(carID)
     return findedUser
+  }
+
+  findAll() {
+    const findedCars = this.carModel.find()
+    return findedCars
   }
 }
