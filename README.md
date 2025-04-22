@@ -18,6 +18,7 @@ Uma API REST baseada em NestJS para gerenciar um sistema de aluguel de carros. E
   - Autenticação baseada em JWT
   - Rotas protegidas com Guards
   - Middleware de registro de requisições
+  - Interceptors para manipular respotas
 
 ## 🛠️ Tecnologias
 
